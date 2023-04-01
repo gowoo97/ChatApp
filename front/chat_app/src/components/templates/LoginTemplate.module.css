@@ -1,0 +1,10 @@
+.loginTemplate>h1{
+    color: aqua;
+}
+
+.loginTemplate{
+    border: 1px solid black;
+    float: left;
+    width: 50%;
+    height: 100%;
+}
