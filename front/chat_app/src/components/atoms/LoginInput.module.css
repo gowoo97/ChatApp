@@ -1,0 +1,16 @@
+.login{
+    
+   border-left: 0;
+   border-right: 0;
+   border-top: 0;
+   border-bottom: 1px solid black;
+
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+.login:focus{
+    outline: none;
+    border-bottom:1px solid rgb(6, 6, 216);
+    transition: 0.7s;
+}

@@ -1,19 +1,20 @@
-import LoginTemplate from "../templates/LoginTemplate";
 
+import LoginBox from '../templates/LoginBox';
+import styles from './LoginPage.module.css';
 
+const LoginPage = (props) => {
+    return (
+        <div className={styles.container}>
 
+            <LoginBox></LoginBox>
 
-
-
-const LoginPage = (props) =>{
-    return(
-        <div style={{height:"100vh"}}>
-            <LoginTemplate  style={{float:"left"}}></LoginTemplate>
-            <div style={{float:"right"}}>
-                dsfdsfds
-            </div>
         </div>
     )
+
+
 }
+
+
+
 
 export default LoginPage;
