@@ -1,4 +1,4 @@
-package com.project.chapApp;
+package com.gowoo.chatApp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
