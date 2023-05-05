@@ -8,6 +8,7 @@
 	height:100vh;
 	width:200px;
 	border:1px solid black;
+	position: relative;
 }
 
 #content{
@@ -29,7 +30,44 @@
 	border-radius: 50%;
 	margin: 0 auto;
 }
+
+.buttons{
+	position: absolute;
+	bottom:0px;
+	width:100%;
+}
+
+#typeArea{
+	width:100%;
+	display: flex;
+}
+
+#typeArea>input[type="text"]{
+	width:80%;
+	padding:0;
+	margin:0;
+}
+
+#typeArea>input[type="button"]{
+	width:20%;
+	padding:0;
+	margin:0;
+}
+#content{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+#textArea{
+	overflow:scroll;
+	height:85%;
+	border:6px solid yellow;
+}
+#typeArea{
+	position: absolute;
+	height:10%;
+	bottom:0px;
+}
 .buttons>button{
 	width:100%;
-	
 }

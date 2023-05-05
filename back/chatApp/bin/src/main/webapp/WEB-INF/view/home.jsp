@@ -24,17 +24,13 @@
 			</div>
 			<div class="buttons">
 				<button>로그인</button>	
+			</div>
+			<div class="buttons">
 				<button>회원가입</button>
 			</div>
 		</section>
 		<section id="content"> 
-			<div id="textArea">
-			dsfsdfsd
-			</div>
-			<div id="typeArea">
-				<input type="text" />
-				<input type="button" value="전송"/>
-			</div>
+		
 		</section>
 	</div>
 </body>
