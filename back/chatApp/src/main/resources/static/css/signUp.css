@@ -1,0 +1,32 @@
+#container{
+	border:1px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height:100vh;
+}
+
+#content{
+	border:1px solid black;
+	display: flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items: center;
+	width: 500px;
+	height:300px;
+}
+
+
+
+
+h1{
+	text-align: center;
+}
+
+input{
+	box-sizing:border-box;
+	width:300px;
+	justify-content: center;
+	height:50px;
+}
+

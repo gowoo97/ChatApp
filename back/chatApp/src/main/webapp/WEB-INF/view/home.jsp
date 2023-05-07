@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet"  href="resources/css/home.css"/>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -23,8 +23,8 @@
 				</div>
 			</div>
 			<div class="buttons">
-				<button>·Î±×ÀÎ</button>	
-				<button>È¸¿ø°¡ÀÔ</button>
+				<button>ë¡œê·¸ì¸</button>	
+				<button>íšŒì›ê°€ì…</button>
 			</div>
 		</section>
 		<section id="content"> 
@@ -33,11 +33,10 @@
 			</div>
 			<div id="typeArea">
 				<input type="text" />
-				<input type="button" value="Àü¼Û"/>
+				<input type="button"  value="ì „ì†¡"/>
 			</div>
 		</section>
 	</div>
 </body>
-
 
 </html>
