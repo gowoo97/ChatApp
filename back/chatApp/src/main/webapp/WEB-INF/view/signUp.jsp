@@ -10,7 +10,7 @@
 <body>
 	<div id="container">
 	
-	<form method="post">
+	<form method="post" action="/signUp">
 	<div id="content">
 		<h1>회원가입</h1>
 		

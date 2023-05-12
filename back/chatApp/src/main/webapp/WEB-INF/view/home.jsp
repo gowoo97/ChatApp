@@ -23,8 +23,18 @@
 				</div>
 			</div>
 			<div class="buttons">
-				<button>로그인</button>	
-				<button>회원가입</button>
+				
+				<c:choose>
+					<c:when test="${ userId == null }">
+						<button onclick="location.href='/signIn';">로그인</button>
+					</c:when>
+					<c:otherwise>
+						<button onclick="location.href='/logout.do'">로그아웃</button>
+					</c:otherwise>
+				</c:choose>
+				<button onclick="location.href='/signUp'">회원가입</button>
+					
+				
 			</div>
 		</section>
 		<section id="content"> 
