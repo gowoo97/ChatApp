@@ -15,12 +15,8 @@ public class LogoutController {
 	@GetMapping
 	public String logout(HttpSession session,HttpServletResponse resp) {
 		
-		Cookie cookie=new Cookie("sessionId",null);
-		cookie.setMaxAge(0);
-		resp.addCookie(cookie);
 		
 		session.removeAttribute("userId");
-		session.invalidate();
 		return "redirect:/";
 	}
 	

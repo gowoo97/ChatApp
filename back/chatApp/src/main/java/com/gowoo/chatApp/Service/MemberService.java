@@ -1,5 +1,9 @@
 package com.gowoo.chatApp.Service;
 
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +27,23 @@ public class MemberService {
 	public MemberDTO login(String id,String pw) {
 		
 		return repository.findById(id);
+	}
+	
+	public JSONObject getMemberList(String id) {
+		List<MemberDTO> list=repository.findByIdStartingWith(id);
+		
+		JSONObject obj=new JSONObject();
+		JSONArray arr=new JSONArray();
+		
+		for(MemberDTO member : list) {
+			JSONObject objmember=new JSONObject();
+			objmember.put("memberId",member.getId());
+			arr.put(objmember);			
+		}
+		
+		obj.put("members", arr);
+		
+		System.out.println(obj);
+		return obj;
 	}
 }

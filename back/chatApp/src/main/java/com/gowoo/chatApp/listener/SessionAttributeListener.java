@@ -22,7 +22,7 @@ public class SessionAttributeListener implements HttpSessionAttributeListener {
 		String userId=(String) session.getAttribute("userId");
 		if(members.containsKey(userId)) {//이미 로그인 된 세션이 있다면
 			HttpSession preLoged=members.get(userId);
-			preLoged.invalidate();//이미 로그인된 세션 종료
+			preLoged.removeAttribute("userId");//이미 로그인된 세션 종료
 		}
 		
 		members.put(userId, session);
