@@ -65,12 +65,44 @@
 		modal[0].style.zIndex=-1;
 	}
 	
-	var listChange=function(){
-		var list=document.getElementsByClassName("list");
-		var search=document.getElementById("modalInput");
+	
+	var httpRequest=new XMLHttpRequest();
+	var list=document.getElementsByClassName("list");
+	var search=document.getElementById("modalInput");
+	httpRequest.onload = () => {
+  if (httpRequest.readyState === httpRequest.DONE) {
+    if (httpRequest.status === 200) {
+		var rst=JSON.parse(httpRequest.responseText);
+		list[0].innerHTML="";
 		
-		console.log(search.value);
+		for(var i=0;i<rst.members.length;i++){
+			list[0].innerHTML+=rst.members[i].memberId+"<br/>";
+		}
+      
+    }
+  }
+};
 
-	}
+
+	var listChange=function(){
+		
+		
+		
+		
+		if(search.value ==  ""){
+			list[0].innerHtml="";
+			return;
+		}
+		var url="/member/"+search.value;
+		httpRequest.open("GET",url);
+		
+		httpRequest.send();
+		
+
+
+		
+	
+	
+}
 </script>
 </html>
