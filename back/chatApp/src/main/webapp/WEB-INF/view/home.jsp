@@ -22,7 +22,7 @@
 					</c:when>
 					<c:otherwise>
 						<button onclick="location.href='/logout.do'">로그아웃</button>
-						<button>친구 목록</button>
+						<button onclick="openModal();">친구 목록</button>
 					</c:otherwise>
 				</c:choose>
 				
@@ -65,29 +65,34 @@
 		modal[0].style.zIndex=-1;
 	}
 	
+	var openModal=function(){
+		var modal=document.getElementsByClassName("modal");
+		modal[0].style.zIndex=1000;
+	}
 	
 	var httpRequest=new XMLHttpRequest();
 	var list=document.getElementsByClassName("list");
 	var search=document.getElementById("modalInput");
-	httpRequest.onload = () => {
-  if (httpRequest.readyState === httpRequest.DONE) {
-    if (httpRequest.status === 200) {
-		var rst=JSON.parse(httpRequest.responseText);
-		list[0].innerHTML="";
+	
+
+	var sendFriendReq=(id) => {
+		var url="/friendShip/${ userId }/"+id.value;
+		httpRequest.open("POST",url);
+		httpRequest.onload = () => {
+			if (httpRequest.readyState === httpRequest.DONE) {
+  	  if (httpRequest.status === 200) {
 		
-		for(var i=0;i<rst.members.length;i++){
-			list[0].innerHTML+=rst.members[i].memberId+"<br/>";
-		}
-      
-    }
-  }
-};
+		console.log("친구요청 보냄");
+  	  }
+  	}
+	}
+httpRequest.send();	
+	};
 
 
-	var listChange=function(){
-		
-		
-		
+
+	//리스트 목록 불러오기
+	var listChange=function(){	
 		
 		if(search.value ==  ""){
 			list[0].innerHtml="";
@@ -95,13 +100,21 @@
 		}
 		var url="/member/"+search.value;
 		httpRequest.open("GET",url);
+		httpRequest.onload = () => {
+ 	 if (httpRequest.readyState === httpRequest.DONE) {
+  	  if (httpRequest.status === 200) {
+		var rst=JSON.parse(httpRequest.responseText);
+		list[0].innerHTML="";
 		
+		for(var i=0;i<rst.members.length;i++){
+			rst.members[i].memberId
+			list[0].innerHTML+="<div><span>"+rst.members[i].memberId+"</span>"+"<button value='"+ rst.members[i].memberId +"' onclick='sendFriendReq(this);'>친구요청</button>";
+		}
+      
+    }
+  }
+};
 		httpRequest.send();
-		
-
-
-		
-	
 	
 }
 </script>
