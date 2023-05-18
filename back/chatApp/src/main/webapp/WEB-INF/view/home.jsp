@@ -46,8 +46,8 @@
 		<input type="text" id="modalInput" oninput="listChange();"/>
 		<button>전송</button>
 		<br/>
-		<button>목록</button>
-		<button>친구요청</button>
+		<button onclick="toggle();">목록</button>
+		<button onclick="getFriendReq();">친구요청</button>
 		
 		<div class="list">
 			
@@ -60,21 +60,32 @@
 	
 </body>
 <script>
+var httpRequest=new XMLHttpRequest();
+var list=document.getElementsByClassName("list");
+var search=document.getElementById("modalInput");
+	var reqList=false;
+
+	var toggle=()=> {
+		list[0].innerHTML="";
+			reqList=false;
+		
+	}
+	
 	var closeModal=function(){
 		var modal=document.getElementsByClassName("modal");
 		modal[0].style.zIndex=-1;
+		list[0].innerHTML="";
 	}
 	
 	var openModal=function(){
 		var modal=document.getElementsByClassName("modal");
 		modal[0].style.zIndex=1000;
+		list[0].innerHTML="";
 	}
 	
-	var httpRequest=new XMLHttpRequest();
-	var list=document.getElementsByClassName("list");
-	var search=document.getElementById("modalInput");
 	
-
+	
+	//친구요청 보내기
 	var sendFriendReq=(id) => {
 		var url="/friendShip/${ userId }/"+id.value;
 		httpRequest.open("POST",url);
@@ -92,10 +103,15 @@ httpRequest.send();
 
 
 	//리스트 목록 불러오기
-	var listChange=function(){	
+	var listChange=function(){
+		
+		//현재 토글이 요청목록(true) 이라면
+		if(reqList==true){
+			return;
+		}
 		
 		if(search.value ==  ""){
-			list[0].innerHtml="";
+			list[0].innerHTML="";
 			return;
 		}
 		var url="/member/"+search.value;
@@ -117,5 +133,42 @@ httpRequest.send();
 		httpRequest.send();
 	
 }
+	
+	//친구요청 받기
+	var getFriendReq=() => {
+		
+		reqList=true;
+		
+		//리스트 초기화
+		list[0].innerHTML="";
+		var content="";
+		var url="/friendShip/receiver/"+`${ userId }`;
+		httpRequest.open("GET",url);
+		httpRequest.onload= ()=>{
+			if (httpRequest.readyState === httpRequest.DONE) {
+			  	  if (httpRequest.status === 200) {
+					var rst=JSON.parse(httpRequest.responseText);
+
+					for(var i=0;i<rst.friendShip.length;i++){
+						if(rst.friendShip[i].accept == true){
+							continue;
+						}
+						content+="<div>";
+						content+=rst.friendShip[i].sender;
+						content+="<button>수락</button>";
+						content+="<button>거절</button>";
+						content+="</div>";
+						
+					}
+					
+					list[0].innerHTML=content;
+			      
+			    }
+			  }
+		}
+		
+		httpRequest.send();
+	}
+	
 </script>
 </html>

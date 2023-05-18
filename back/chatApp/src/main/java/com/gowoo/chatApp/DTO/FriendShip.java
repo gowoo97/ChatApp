@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
-@Data
+
 @Entity
 @Table(name = "friendShip")
 public class FriendShip {
@@ -20,5 +20,21 @@ public class FriendShip {
 	
 	@Column(name="accept")
 	private boolean accept;
+
+	public Friend getFriend() {
+		return friend;
+	}
+
+	public void setFriend(Friend friend) {
+		this.friend = friend;
+	}
+
+	public boolean isAccept() {
+		return accept;
+	}
+
+	public void setAccept(boolean accept) {
+		this.accept = accept;
+	}
 	
 }
