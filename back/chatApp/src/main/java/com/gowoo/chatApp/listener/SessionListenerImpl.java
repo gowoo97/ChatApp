@@ -1,14 +1,18 @@
 package com.gowoo.chatApp.listener;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @WebListener
 public class SessionListenerImpl implements HttpSessionListener {
-
+	
 	@Override
 	public void sessionCreated(HttpSessionEvent se) {
 		
