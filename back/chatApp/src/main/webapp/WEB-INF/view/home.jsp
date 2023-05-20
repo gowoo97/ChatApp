@@ -155,8 +155,8 @@ httpRequest.send();
 						}
 						content+="<div>";
 						content+=rst.friendShip[i].sender;
-						content+="<button>수락</button>";
-						content+="<button>거절</button>";
+						content+="<button value="+rst.friendShip[i].sender+" onclick='acceptFriendReq(this);'>수락</button>";
+						content+="<button value="+rst.friendShip[i].sender+" onclick='deleteFriendReq(this)'>거절</button>";
 						content+="</div>";
 						
 					}
@@ -167,6 +167,37 @@ httpRequest.send();
 			  }
 		}
 		
+		httpRequest.send();
+	}
+	
+	//친구 수락
+	var acceptFriendReq=(id)=>{
+		var url="/friendShip/"+id.value+"/"+`${ userId }`;
+		httpRequest.open("PUT",url);
+		httpRequest.onload= ()=>{
+			if (httpRequest.readyState === httpRequest.DONE) {
+			  	  if (httpRequest.status === 200) {
+					id.parentNode.remove();
+			      
+			    }
+			  }
+		}
+		httpRequest.send();
+		
+	}
+	
+	//친구 거절
+	var deleteFriendReq=(id)=>{
+		var url="/friendShip/"+id.value+"/"+`${ userId }`;
+		httpRequest.open("DELETE",url);
+		httpRequest.onload= ()=>{
+			if (httpRequest.readyState === httpRequest.DONE) {
+			  	  if (httpRequest.status === 200) {
+					id.parentNode.remove();
+			      
+			    }
+			  }
+		}
 		httpRequest.send();
 	}
 	

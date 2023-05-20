@@ -1,9 +1,11 @@
 package com.gowoo.chatApp.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +23,16 @@ public class FriendShipController {
 	public void sendFriendReq(@PathVariable("id1") String id1,@PathVariable("id2") String id2) {
 		
 		service.sendFriendReq(id1,id2);
+	}
+	
+	@PutMapping("/{id1}/{id2}")
+	public void acceptReq(@PathVariable("id1") String id1,@PathVariable("id2") String id2) {
+		service.acceptFriendReq(id1, id2);
+	}
+	
+	@DeleteMapping("/{id1}/{id2}")
+	public void deleteReq(@PathVariable("id1") String id1,@PathVariable("id2") String id2) {
+		service.deleteFriendReq(id1, id2);
 	}
 	
 	@GetMapping("/receiver/{id}")
