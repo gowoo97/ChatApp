@@ -40,7 +40,7 @@ public class SessionAttributeListener implements HttpSessionAttributeListener {
 	@Override
 	public void attributeRemoved(HttpSessionBindingEvent se) {
 		
-		
+		members.remove(se.getValue());
 		
 		System.out.println("세션 제거됨!");
 	}
