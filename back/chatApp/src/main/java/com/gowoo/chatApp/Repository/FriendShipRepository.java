@@ -13,4 +13,6 @@ public interface FriendShipRepository extends CrudRepository<FriendShip, Friend>
 	
 	public FriendShip findByFriendSenderAndFriendReceiver(String sender,String receiver);
 	
+	public List<FriendShip> findByFriendSenderOrFriendReceiverAndAccept(String id1,String id2,boolean accept);
+	
 }

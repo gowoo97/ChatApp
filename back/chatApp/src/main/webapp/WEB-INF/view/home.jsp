@@ -22,6 +22,7 @@
 					</c:when>
 					<c:otherwise>
 						<button onclick="location.href='/logout.do'">로그아웃</button>
+						<button onclick="location.href='/room/reg'">방 만들기</button>
 						<button onclick="openModal();">친구 목록</button>
 					</c:otherwise>
 				</c:choose>

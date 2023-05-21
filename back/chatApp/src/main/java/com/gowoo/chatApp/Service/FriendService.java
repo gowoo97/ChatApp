@@ -1,5 +1,6 @@
 package com.gowoo.chatApp.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -65,5 +66,26 @@ public class FriendService {
 		System.out.println("service:"+obj.toString());
 		return obj;
 	}
+	
+	public List<String> getFriends(String id){
+		List<FriendShip> list=repository.findByFriendSenderOrFriendReceiverAndAccept(id,id, true);
+		
+		List<String> friends=new LinkedList<>();
+		
+		for(FriendShip f: list) {
+			String id1=f.getFriend().getReceiver();
+			String id2=f.getFriend().getSender();
+			if(id1.equals(id)) {
+				friends.add(id2);
+			}
+			else {
+				friends.add(id1);
+			}
+		}
+		
+		return friends;
+	}
+	
+	
 	
 }
