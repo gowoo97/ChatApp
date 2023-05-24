@@ -33,7 +33,7 @@ public class SignInController {
 	
 	@PostMapping
 	public String signIn(String id,String pw,HttpSession session,HttpServletResponse res,HttpServletRequest req,
-			@CookieValue(value="sessionId",required = false) String sessionCookie,Model model) {
+			 String sessionCookie,Model model) {
 		MemberDTO rst=service.login(id, pw);
 		//아이디가 존재하지 않을때.
 		if(rst==null) {

@@ -1,6 +1,5 @@
 package com.gowoo.chatApp.DTO;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,14 +11,14 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="room")
-public class Room {
+@Table(name = "participants")
+public class Participants {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long seq;
+	@Id	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long seq;
 	
-	@Column(name = "title")
-	private String title;
-		
+	private long user_seq;
+	
+	private long room_no;
+	
 }

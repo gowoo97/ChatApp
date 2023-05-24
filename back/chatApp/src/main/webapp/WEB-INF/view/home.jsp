@@ -12,6 +12,20 @@
 	<div class="container">
 		<section id="nav">
 			
+			<c:choose>
+				<c:when test="${ userId != null }">
+					<div id="profile">
+				
+					</div>
+				<h5 style="text-align:center; margin:0;">${ userId }</h5>
+					
+				<div class="rooms" style="overflow-y:scroll;">
+				
+				</div>
+				</c:when>
+			</c:choose>
+			
+			
 			
 			<div class="buttons">
 				
@@ -33,7 +47,7 @@
 		</section>
 		<section id="content"> 
 			<div id="textArea">
-			dsfsdfsd
+			
 			</div>
 			<div id="typeArea">
 				<input type="text" />

@@ -2,6 +2,8 @@ package com.gowoo.chatApp.Repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface RoomRepository extends CrudRepository<T, ID> {
+import com.gowoo.chatApp.DTO.Room;
+
+public interface RoomRepository extends CrudRepository<Room, Long> {
 
 }

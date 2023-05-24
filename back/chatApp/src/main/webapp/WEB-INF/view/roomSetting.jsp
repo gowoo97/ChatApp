@@ -11,7 +11,7 @@
 <body>
 	<div id="container">
 	
-	<form  method="post">
+	<form  method="POST" action="/room/reg">
 	<div id="content">
 		<h1>방 만들기</h1>
 		
@@ -27,7 +27,7 @@
 				<c:forEach var="item" items="${ friends }">
 					<div>
 						<span>${ item }</span>
-						<input type="checkbox" value="${ item }"/>
+						<input type="checkbox" value="${ item }" name="participant" />
 					</div>
 				</c:forEach>
 			
