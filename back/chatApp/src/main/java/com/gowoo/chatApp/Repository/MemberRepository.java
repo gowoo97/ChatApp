@@ -11,5 +11,7 @@ public interface MemberRepository extends CrudRepository<MemberDTO, Long> {
 
 	public MemberDTO findById(String id);
 	
+	
+	
 	public List<MemberDTO> findByIdStartingWith(@Param("id") String id);
 }

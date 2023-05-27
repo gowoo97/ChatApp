@@ -4,9 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data
@@ -17,8 +18,13 @@ public class Participants {
 	@Id	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long seq;
 	
-	private long user_seq;
 	
-	private long room_no;
+	private String userId;
 	
+	
+	private long roomNo;
+	
+	@ManyToOne
+	@JoinColumn(name = "title")
+	private Room room;
 }

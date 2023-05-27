@@ -41,7 +41,8 @@ public class SignInController {
 			model.addAttribute("url","/signIn");
 			return "alert";
 		}
-
+		
+		
 	
 		//로그인 안되어 있음
 		req.getSession().setAttribute("userId", rst.getId());

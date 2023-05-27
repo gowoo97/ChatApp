@@ -16,10 +16,11 @@ import lombok.Data;
 public class Room {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long seq;
 	
 	@Column(name = "title")
 	private String title;
+	
 		
 }

@@ -14,19 +14,12 @@ public class RoomService {
 	@Autowired
 	private RoomRepository roomRepository;
 	
-	public long roomReg(String title) {
+	public Room roomReg(String title) {
 		Room room=new Room();
 		room.setTitle(title);
 		roomRepository.save(room);
-		return room.getSeq();
+		return room;
 	}
 	
-	
-	public void participate(long user_seq,long room_no) {
-		Participants p=new Participants();
-		p.setUser_seq(user_seq);
-		p.setRoom_no(room_no);
-		participants.save(p);
-	}
 	
 }

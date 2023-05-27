@@ -20,7 +20,14 @@
 				<h5 style="text-align:center; margin:0;">${ userId }</h5>
 					
 				<div class="rooms" style="overflow-y:scroll;">
-				
+				<c:if test="${ titles != null }" >
+					<c:forEach var="item" items=" ${titles} ">
+						<div>
+							${ item }
+						</div>
+					</c:forEach>
+				</c:if>
+					
 				</div>
 				</c:when>
 			</c:choose>

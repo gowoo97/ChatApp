@@ -19,7 +19,7 @@ public class MemberDTO {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long seq;
 	
-	@Column(name = "id")
+	@Column(name = "id" ,unique = true)
 	private String id;
 	
 	@Column(name="pw")

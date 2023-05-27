@@ -29,6 +29,10 @@ public class MemberService {
 		return repository.findById(id);
 	}
 	
+	public long getMemberSeq(String id) {
+		return repository.findById(id).getSeq();
+	}
+	
 	public JSONObject getMemberList(String id) {
 		List<MemberDTO> list=repository.findByIdStartingWith(id);
 		
