@@ -21,9 +21,9 @@
 					
 				<div class="rooms" style="overflow-y:scroll;">
 				<c:if test="${ titles != null }" >
-					<c:forEach var="item" items=" ${titles} ">
+					<c:forEach var="item" items="${ titles }">
 						<div>
-							${ item }
+							<a href="/room/${ item.seq }"> ${ item.title } </a> 
 						</div>
 					</c:forEach>
 				</c:if>

@@ -1,12 +1,13 @@
 package com.gowoo.chatApp.Service;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gowoo.chatApp.DTO.Participants;
+import com.gowoo.chatApp.DTO.Room;
 import com.gowoo.chatApp.Repository.ParticipantsRepository;
 
 @Service
@@ -19,15 +20,14 @@ public class ParticipantService {
 		repository.save(p);
 	}
 	
-	public List<String> roomList(String userId){
+	public List<Room> roomList(String userId){
 		List<Participants> list=repository.findByUserId(userId);
-		List<String> titles=new LinkedList<>();
-		
+		List<Room> rooms=new ArrayList<>();
 		for(Participants p : list) {
-			titles.add(p.getRoom().getTitle());
+			rooms.add(p.getRoom());
 		}
 		
-		return titles;
+		return rooms;
 		
 	}
 	

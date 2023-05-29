@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.gowoo.chatApp.DTO.Room;
 import com.gowoo.chatApp.Service.ParticipantService;
 
 @Controller
@@ -22,7 +23,7 @@ public class HomeController {
 		String userId=(String)session.getAttribute("userId");
 		if(userId != null) {
 			
-			List<String> titles= service.roomList(userId);
+			List<Room> titles= service.roomList(userId);
 			model.addAttribute("titles", titles);
 		}
 		

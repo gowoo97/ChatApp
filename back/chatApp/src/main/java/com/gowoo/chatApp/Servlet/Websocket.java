@@ -5,15 +5,11 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.server.ServerEndpoint;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.gowoo.chatApp.DTO.MemberDTO;
-import com.gowoo.chatApp.Repository.MemberRepository;
-// WebSocket의 호스트 주소 설정
 
 @Component
-@ServerEndpoint("/chat")
+@ServerEndpoint("/test")
 public class Websocket {
 	
   // WebSocket으로 브라우저가 접속하면 요청되는 함수	
