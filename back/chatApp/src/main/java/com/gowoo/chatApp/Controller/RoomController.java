@@ -75,5 +75,11 @@ public class RoomController {
 	}
 	
 	
+	@GetMapping("/{roomId}")
+	public String enterRoom() {
+		
+		return "home";
+	}
+	
 	
 }

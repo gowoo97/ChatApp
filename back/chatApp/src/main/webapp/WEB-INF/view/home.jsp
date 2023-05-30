@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet"  href="resources/css/home.css"/>
+<link rel="stylesheet"  href="${path}/resources/css/home.css"/>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
 </head>
 <body>
+
 	<div class="container">
 		<section id="nav">
 			
@@ -57,8 +62,8 @@
 			
 			</div>
 			<div id="typeArea">
-				<input type="text" />
-				<input type="button"  value="전송"/>
+				<input type="text" id="text"/>
+				<input type="button"  value="전송" id="sendBtt" onclick="sen();" />
 			</div>
 		</section>
 	</div>
@@ -82,6 +87,29 @@
 	
 </body>
 <script>
+
+var socket = new SockJS('/chat');
+var stompClient = Stomp.over(socket);
+
+function connect(){
+	stompClient.connect({} , function (frame) {
+		
+		console.log('Connected: '+ frame);
+		stompClient.subscribe('/room/1',function(){
+			
+		});
+	});
+}
+
+connect();
+
+
+function sen(){
+	stompClient.send("/room/1",{},"hello");
+}
+
+
+
 var httpRequest=new XMLHttpRequest();
 var list=document.getElementsByClassName("list");
 var search=document.getElementById("modalInput");
