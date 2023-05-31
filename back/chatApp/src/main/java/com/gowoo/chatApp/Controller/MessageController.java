@@ -1,18 +1,16 @@
 package com.gowoo.chatApp.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.simp.SimpMessageSendingOperations;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MessageController {
 	
-	@Autowired
-	private SimpMessageSendingOperations smso;
-	
-	@MessageMapping("/send")
-	public void message(String message) {
-		smso.convertAndSend("/room/1", message);
+	@MessageMapping("/send/{id}")
+	@SendTo("/room/{id}")
+	public String message(String message) throws Exception{
+		Thread.sleep(1000);
+		return message;
 	}
 }
