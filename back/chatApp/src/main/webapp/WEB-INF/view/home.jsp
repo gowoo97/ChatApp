@@ -9,8 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script> 
 </head>
 <body>
 
@@ -63,7 +62,7 @@
 			</div>
 			<div id="typeArea">
 				<input type="text" id="text"/>
-				<input type="button"  value="전송" id="sendBtt" onclick="sen();" />
+				<input type="button"  value="전송" id="sendBtt" onclick="send();" />
 			</div>
 		</section>
 	</div>
@@ -99,7 +98,7 @@ function connect(){
 		console.log('Connected: '+ frame);
 		stompClient.subscribe('/room/'+vals[vals.length-1],function(message){
 			const textArea=document.getElementById('textArea');
-			textArea.innerHTML+="<div>"+message.body+"</div>";
+			textArea.innerHTML+="<div><div class='message'>"+message.body+"</div></div>";
 		});
 	});
 }
@@ -107,8 +106,9 @@ function connect(){
 connect();
 
 
-function sen(){
-	const message=document.getElementById('text').value;
+function send(){
+	var message='<span style="color:blue;">${ userId }</span>'+":";
+	message+=document.getElementById('text').value;
 	stompClient.send("/pub/send/"+vals[vals.length-1],{},message);
 	document.getElementById('text').value='';
 }
