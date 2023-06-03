@@ -18,9 +18,8 @@ connect();
 
 
 function send(){
-	var message='<span style="color:blue;">'+userId+'</span>'+":";
-	message+=document.getElementById('text').value;
-	stompClient.send("/pub/send/"+vals[vals.length-1],{},message);
+	var message=document.getElementById('text').value;
+	stompClient.send("/pub/send/"+vals[vals.length-1],{},JSON.stringify({'sender':userId ,'text':message,'roomNo':vals[vals.length-1]}));
 	document.getElementById('text').value='';
 }
 

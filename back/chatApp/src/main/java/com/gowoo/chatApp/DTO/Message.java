@@ -1,12 +1,24 @@
 package com.gowoo.chatApp.DTO;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
+
+import java.sql.Timestamp;
+
+import java.sql.Timestamp;
+
+import java.sql.Timestamp;
+
+import java.sql.Timestamp;
+
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Builder;
 import lombok.Data;
@@ -18,14 +30,17 @@ import lombok.Data;
 public class Message {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long seq;
+	private Long seq;
+	
 	
 	private String sender;
 	
 	private String text;
 	
-	private long room_no;
+	private Long roomNo;
 	
-    private LocalDateTime createdDate;
+	@CreationTimestamp
+	private Timestamp createdDate;
+	
 	
 }

@@ -21,10 +21,15 @@
 			
 			<c:choose>
 				<c:when test="${ userId != null }">
+				<div id="status">
 					<div id="profile">
 				
 					</div>
-				<h5 style="text-align:center; margin:0;">${ userId }</h5>
+					<div id="user">
+						${ userId }
+					</div>
+				</div>
+				<hr/>
 					
 				<div class="rooms" style="overflow-y:scroll;">
 				<c:if test="${ titles != null }" >
@@ -93,12 +98,5 @@
 var userId='${userId}';
 var search=document.getElementById('modalInput');
 
-
-
-	
-	
-	
-	
-	
 </script>
 </html>
