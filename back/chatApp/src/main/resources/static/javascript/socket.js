@@ -8,16 +8,18 @@ function connect(){
 		
 		console.log('Connected: '+ frame);
 		stompClient.subscribe('/room/'+vals[vals.length-1],function(message){
-			const textArea=document.getElementById('textArea');
-			const jsonMessage=JSON.parse(message.body);
-			textArea.innerHTML+="<div><div class='messageSender'>";
-			textArea.innerHTML+=jsonMessage.sender;
-			textArea.innerHTML+="</div><div class='messageContent'>";
-			textArea.innerHTML+=jsonMessage.text;
-			textArea.innerHTML+="</div></div>";
+			var textArea=document.getElementById('textArea');
+			var jsonMessage=JSON.parse(message.body);
+			var element="";
+			element+="<div> <div class='messageSender'>";
+			element+=jsonMessage.sender;
+			element+="</div> <div class='messageContent'>";
+			element+=jsonMessage.text;
+			element+="</div> </div>";
 			
-			const messageContent=document.getElementsByClassName("messageContent");
-			messageContent[messageContent.length-1].style.backgroundColor='#87CEFA';
+			textArea.innerHTML+=element;
+			
+		
 		});
 	});
 }
