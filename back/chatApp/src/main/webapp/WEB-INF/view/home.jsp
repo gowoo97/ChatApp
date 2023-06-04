@@ -66,7 +66,19 @@
 		</section>
 		<section id="content"> 
 			<div id="textArea">
-			
+				
+				<c:forEach items="${ messages }" var="item">
+					<div>
+						<div class="messageSender">
+							${ item.sender }
+						</div>
+						<div class="messageContent">
+							${ item.text }
+						</div>
+					</div>
+				</c:forEach>
+				
+				
 			</div>
 			<div id="typeArea">
 				<input type="text" id="text"/>

@@ -156,3 +156,8 @@ body::-webkit-scrollbar{
 	background-color: gray;
 	min-width: 200px;
 }
+
+.messageContent{
+	display: inline-block;
+	background-color: #87CEFA;
+}

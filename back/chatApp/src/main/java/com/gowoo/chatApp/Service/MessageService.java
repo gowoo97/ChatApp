@@ -1,5 +1,7 @@
 package com.gowoo.chatApp.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,4 +18,16 @@ public class MessageService {
 		System.out.println(message);
 		repository.save(message);
 	}
+	
+	
+	public List<Message> getMessages(Long roomId){
+		
+		List<Message> messages=repository.findByRoomNo(roomId);
+		
+		return messages;
+		
+	}
+	
+	
+	
 }

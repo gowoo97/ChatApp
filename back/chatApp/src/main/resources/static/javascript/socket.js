@@ -9,7 +9,15 @@ function connect(){
 		console.log('Connected: '+ frame);
 		stompClient.subscribe('/room/'+vals[vals.length-1],function(message){
 			const textArea=document.getElementById('textArea');
-			textArea.innerHTML+="<div><div class='message'>"+message.body+"</div></div>";
+			const jsonMessage=JSON.parse(message.body);
+			textArea.innerHTML+="<div><div class='messageSender'>";
+			textArea.innerHTML+=jsonMessage.sender;
+			textArea.innerHTML+="</div><div class='messageContent'>";
+			textArea.innerHTML+=jsonMessage.text;
+			textArea.innerHTML+="</div></div>";
+			
+			const messageContent=document.getElementsByClassName("messageContent");
+			messageContent[messageContent.length-1].style.backgroundColor='#87CEFA';
 		});
 	});
 }

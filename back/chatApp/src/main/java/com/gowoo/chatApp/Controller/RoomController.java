@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.gowoo.chatApp.DTO.Message;
 import com.gowoo.chatApp.DTO.Participants;
 import com.gowoo.chatApp.DTO.Room;
 import com.gowoo.chatApp.Service.FriendService;
+import com.gowoo.chatApp.Service.MessageService;
 import com.gowoo.chatApp.Service.ParticipantService;
 import com.gowoo.chatApp.Service.RoomService;
 
@@ -32,6 +34,9 @@ public class RoomController {
 	
 	@Autowired
 	private ParticipantService participantService;
+	
+	@Autowired
+	private MessageService messageService;
 	
 	@GetMapping("/reg")
 	public String roomSetting(Model model,HttpSession session) {
@@ -79,6 +84,9 @@ public class RoomController {
 	@GetMapping("/{roomId}")
 	public String enterRoom(Model model,@PathVariable("roomId") Long roomId) {
 		
+		List<Message> messages=messageService.getMessages(roomId);
+		
+		model.addAttribute("messages", messages);
 		
 		
 		
