@@ -22,9 +22,7 @@
 			<c:choose>
 				<c:when test="${ userId != null }">
 				<div id="status">
-					<div id="profile">
-				
-					</div>
+					
 					<div id="user">
 						${ userId }
 					</div>
