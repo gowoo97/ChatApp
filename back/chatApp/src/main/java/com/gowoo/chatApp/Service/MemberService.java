@@ -16,6 +16,7 @@ public class MemberService {
 	@Autowired
 	MemberRepository repository;
 	
+	//멤버 저장
 	public void insertMember(MemberDTO member) {
 	
 		repository.save(member);
@@ -24,6 +25,7 @@ public class MemberService {
 		
 	}
 	
+	//아이디 일치 확인
 	public MemberDTO login(String id,String pw) {
 		
 		return repository.findById(id);
@@ -33,6 +35,7 @@ public class MemberService {
 		return repository.findById(id).getSeq();
 	}
 	
+	//id로 시작하는 멤버 리스트 조회
 	public JSONObject getMemberList(String id) {
 		List<MemberDTO> list=repository.findByIdStartingWith(id);
 		

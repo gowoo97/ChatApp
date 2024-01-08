@@ -1,4 +1,4 @@
-package com.gowoo.chatApp.Repository;
+ package com.gowoo.chatApp.Repository;
 
 import org.springframework.data.repository.CrudRepository;
 
