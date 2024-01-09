@@ -159,5 +159,18 @@ body::-webkit-scrollbar{
 
 .messageContent{
 	display: inline-block;
+	position: relative;
 	background-color: #87CEFA;
+	min-width: 100px;
+	margin-left: 10px;
+}
+
+.messageContent:after{
+	content:'';
+	position:absolute;
+	border-right:10px solid #87CEFA;
+	border-top: 5px solid transparent;
+	border-bottom:5px solid transparent;
+	left:-10px;
+	top:1px;
 }
