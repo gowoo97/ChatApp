@@ -19,12 +19,10 @@ public class Participants {
 	private long seq;
 	
 	
-	private String userId;
-	
-	
-	private long roomNo;
+	@ManyToOne
+	private MemberDTO member;
 	
 	@ManyToOne
-	@JoinColumn(name = "title")
 	private Room room;
+	
 }

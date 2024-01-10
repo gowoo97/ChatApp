@@ -22,13 +22,9 @@ public class HomeController {
 	public String home(HttpSession session,Model model) {
 		String userId=(String)session.getAttribute("userId");
 		if(userId != null) {
-			
 			List<Room> titles= service.roomList(userId);
 			model.addAttribute("titles", titles);
 		}
-		
-		
-		
 		return "home";
 	}
 	
