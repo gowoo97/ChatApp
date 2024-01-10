@@ -9,6 +9,6 @@ import com.gowoo.chatApp.DTO.Participants;
 public interface ParticipantsRepository extends CrudRepository<Participants, Long> {
 
 	
-	public List<Participants> findByUserId(String userId);
+	public List<Participants> findBySeq(long seq);
 	
 }

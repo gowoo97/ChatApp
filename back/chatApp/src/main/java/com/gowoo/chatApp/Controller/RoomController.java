@@ -45,8 +45,6 @@ public class RoomController {
 		
 		model.addAttribute("friends", list);
 		
-		
-		
 		return "roomSetting";
 	}
 	
@@ -58,25 +56,17 @@ public class RoomController {
 		String title=req.getParameter("title");
 		String maker=(String)session.getAttribute("userId");
 		
-		Room room = roomService.roomReg(title);
+		Room room = roomService.roomReg(title);//새로운 방 생성
 		
-		Participants p1=new Participants();
-		p1.setUserId(maker);
-		p1.setRoomNo(room.getSeq());
-		participantService.participate(p1);
-		p1.setRoom(room);
+		
+		participantService.participate(maker,room.getSeq());//방생성자 참여
+		
+		//p1.setRoom(room);
 		
 		for(String str: participant) {
-			
-			Participants p2=new Participants();
-			p2.setUserId(str);
-			p2.setRoomNo(room.getSeq());
-			p2.setRoom(room);
-			participantService.participate(p2);
+			participantService.participate(str,room.getSeq());
 		}
-		
-		
-		
+	
 		return "redirect:/";
 	}
 	
