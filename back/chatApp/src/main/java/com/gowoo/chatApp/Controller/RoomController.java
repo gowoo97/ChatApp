@@ -77,9 +77,7 @@ public class RoomController {
 		List<Message> messages=messageService.getMessages(roomId);
 		
 		model.addAttribute("messages", messages);
-		
-		
-		
+
 		return "home";
 	}
 	

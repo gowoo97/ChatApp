@@ -6,4 +6,6 @@ import com.gowoo.chatApp.DTO.Room;
 
 public interface RoomRepository extends CrudRepository<Room, Long> {
 
+	
+	
 }
