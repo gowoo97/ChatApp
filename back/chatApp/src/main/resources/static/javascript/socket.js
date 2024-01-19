@@ -8,11 +8,12 @@ function connect(){
 		
 		console.log('Connected: '+ frame);
 		stompClient.subscribe('/room/'+vals[vals.length-1],function(message){
+			console.log(message);
 			var textArea=document.getElementById('textArea');
 			var jsonMessage=JSON.parse(message.body);
 			var element="";
 			element+="<div> <div class='messageSender'>";
-			element+=jsonMessage.sender;
+			element+=jsonMessage.sender.id;
 			element+="</div> <div class='messageContent'>";
 			element+=jsonMessage.text;
 			element+="</div> </div>";

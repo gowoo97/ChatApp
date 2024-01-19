@@ -8,6 +8,6 @@ import com.gowoo.chatApp.DTO.Message;
 
 public interface MessageRepository extends CrudRepository<Message,Long> {
 
-	public List<Message> findByRoomNo(Long roomId);
+	public List<Message> findByRoom_Seq(Long roomId);
 	
 }

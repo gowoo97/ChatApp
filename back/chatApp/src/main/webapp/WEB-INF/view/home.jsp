@@ -68,7 +68,7 @@
 				<c:forEach items="${ messages }" var="item">
 					<div>
 						<div class="messageSender">
-							${ item.sender }
+							${ item.sender.id }
 						</div>
 						<div class="messageContent">
 							${ item.text }
